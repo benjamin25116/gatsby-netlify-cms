@@ -34,7 +34,7 @@ collections:
   - name: "home"
     label: "Home"
     folder: "content/home"
-    create: false
+    create: true
     fields:
       - label: "Home Banner"
         name: "banner"
