@@ -34,8 +34,10 @@ collections:
   - name: "home"
     label: "Home"
     folder: "content/home"
-    create: true
+    create: false
+    slug: "home"
     fields:
+      - { label: "Title", name: "title", widget: "string" }
       - label: "Home Banner"
         name: "banner"
         widget: "image"
