@@ -8,6 +8,7 @@ public_folder: /img
 collections:
   - name: "blog"
     label: "Blog"
+    label_singular: "Post"
     folder: "content/blog"
     create: true
     slug: "index"
@@ -20,4 +21,28 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Cover Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - {
+          label: "Body",
+          name: "body",
+          widget: "markdown",
+          hint: "Post main content goes here.",
+        }
+  - name: "home"
+    label: "Home"
+    folder: "content/home"
+    create: false
+    fields:
+      - label: "Home Banner"
+        name: "banner"
+        widget: "image"
+        required: true
+      - {
+          label: "Body",
+          name: "body",
+          widget: "markdown",
+          hint: "Write up for the home page goes here.",
+        }
