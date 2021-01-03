@@ -1,14 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `New Covenant Community Sentul`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `New Covenant Community`,
+      summary: `a vibrant community of followers of Christ in Sentul, Kuala Lumpur.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `A one-stop location for everything related to New Covenant Community in Sentul.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
-      twitter: `kylemathews`,
+      facebook: `nccmalaysia`,
+      youtube: `NCC Malaysia`,
+      instagram: `nccmalaysia`,
     },
   },
   plugins: [
@@ -61,18 +63,19 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `New Covenant Community`,
+        short_name: `NCC`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `content/assets/gatsby-icon.png`,
+        theme_color_in_head: false,
       },
     },
     `gatsby-plugin-react-helmet`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }
