@@ -31,14 +31,15 @@ collections:
           widget: "markdown",
           hint: "Post main content goes here.",
         }
-  - name: "home"
-    label: "Home"
+  - name: "site"
+    label: "Site"
+    label_singular: "Page"
     folder: "content/site"
     create: true
-    slug: "home"
+    slug: "index"
     media_folder: ""
     public_folder: ""
-    path: "{{title}}"
+    path: "{{title}}/index"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - label: "Home Banner"
