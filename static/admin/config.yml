@@ -42,7 +42,7 @@ collections:
     path: "{{title}}/index"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Site", name: "site", widget: "boolean" }
+      - { label: "Site page", name: "site-page", widget: "boolean" }
       - label: "Home Banner"
         name: "banner"
         widget: "image"
