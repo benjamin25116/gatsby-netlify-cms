@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Image from "gatsby-image"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -31,12 +32,13 @@ const BlogIndex = ({ data, location }) => {
       <SEO title="All posts" />
       <Bio />
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-      {/* <p
+      {/* <Image fluid={data.imageSharp.fluid} /> */}
+      <p
         dangerouslySetInnerHTML={{
           __html: home[0].html,
         }}
         itemProp="write-up"
-      /> */}
+      />
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
@@ -77,13 +79,9 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    allFile {
-      edges {
-        node {
-          dir
-          relativePath
-          relativeDirectory
-        }
+    imageSharp(fluid: { originalName: { regex: "/thumbnail/ig" } }) {
+      fluid {
+        ...GatsbyImageSharpFluid
       }
     }
     site {
@@ -107,36 +105,3 @@ export const pageQuery = graphql`
     }
   }
 `
-// query {
-//     allFile {
-//       edges {
-//         node {
-//           dir
-//           relativePath
-//           relativeDirectory
-//         }
-//       }
-//     }
-//     site {
-//       siteMetadata {
-//         title
-//       }
-//     }
-//     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-//       nodes {
-//         excerpt
-//         fields {
-//           slug
-//         }
-//         frontmatter {
-//           date(formatString: "MMMM DD, YYYY")
-//           title
-//           description
-//           banner {
-//             relativePath
-//           }
-//         }
-//         html
-//       }
-//     }
-//   }
