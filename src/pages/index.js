@@ -31,12 +31,12 @@ const BlogIndex = ({ data, location }) => {
       <SEO title="All posts" />
       <Bio />
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-      <p
+      {/* <p
         dangerouslySetInnerHTML={{
           __html: home[0].html,
         }}
         itemProp="write-up"
-      />
+      /> */}
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
@@ -101,12 +101,42 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
-          banner {
-            relativePath
-          }
         }
         html
       }
     }
   }
 `
+// query {
+//     allFile {
+//       edges {
+//         node {
+//           dir
+//           relativePath
+//           relativeDirectory
+//         }
+//       }
+//     }
+//     site {
+//       siteMetadata {
+//         title
+//       }
+//     }
+//     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+//       nodes {
+//         excerpt
+//         fields {
+//           slug
+//         }
+//         frontmatter {
+//           date(formatString: "MMMM DD, YYYY")
+//           title
+//           description
+//           banner {
+//             relativePath
+//           }
+//         }
+//         html
+//       }
+//     }
+//   }
