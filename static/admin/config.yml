@@ -33,7 +33,7 @@ collections:
         }
   - name: "home"
     label: "Home"
-    folder: "content/home"
+    folder: "content/site"
     create: true
     slug: "home"
     media_folder: ""
