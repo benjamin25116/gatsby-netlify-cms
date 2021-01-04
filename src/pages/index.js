@@ -8,6 +8,9 @@ import SEO from "../components/seo"
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  const home = data.allMarkdownRemark.nodes.filter(
+    node => node.frontmatter.title === "Home"
+  )
 
   if (posts.length === 0) {
     return (
@@ -27,6 +30,13 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+      <p
+        dangerouslySetInnerHTML={{
+          __html: home[0].html,
+        }}
+        itemProp="write-up"
+      />
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
@@ -67,6 +77,15 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
+    allFile {
+      edges {
+        node {
+          dir
+          relativePath
+          relativeDirectory
+        }
+      }
+    }
     site {
       siteMetadata {
         title
@@ -82,7 +101,11 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          banner {
+            relativePath
+          }
         }
+        html
       }
     }
   }

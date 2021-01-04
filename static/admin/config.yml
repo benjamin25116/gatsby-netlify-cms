@@ -38,6 +38,7 @@ collections:
     slug: "home"
     media_folder: ""
     public_folder: ""
+    path: "{{title}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - label: "Home Banner"

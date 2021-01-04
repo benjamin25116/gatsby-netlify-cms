@@ -27,6 +27,8 @@ const Bio = () => {
           }
           social {
             twitter
+            facebook
+            youtube
           }
         }
       }
