@@ -17,7 +17,7 @@ const FooSeng = ({ data }) => {
       <h1>Pastor Foo Seng</h1>
       <p>Associate Pastor</p>
       <Image fixed={data.allImageSharp.edges[0].node.fixed} />
-      <main dangerouslySetInnerHTML={{ __html: content.html }}></main>
+      <article dangerouslySetInnerHTML={{ __html: content.html }}></article>
     </Layout>
   )
 }

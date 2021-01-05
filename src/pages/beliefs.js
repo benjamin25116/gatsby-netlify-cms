@@ -12,8 +12,8 @@ const Beliefs = ({ data }) => {
 
   return (
     <Layout title={siteTitle}>
-      <SEO title="Home" />
-      <section dangerouslySetInnerHTML={{ __html: content.html }}></section>
+      <SEO title="Beliefs" />
+      <article dangerouslySetInnerHTML={{ __html: content.html }}></article>
       <ul></ul>
     </Layout>
   )

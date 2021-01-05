@@ -14,15 +14,15 @@ const Home = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Home" />
-      {/* <Image fluid={data.allImageSharp.edges[0].node.fluid} /> */}
-      {/* <pre>{JSON.stringify(data.allImageSharp.edges[0].node.fluid, null, 1)}</pre> */}
+      <Image fluid={data.allImageSharp.edges[0].node.fluid} />
+      {/* <pre>{JSON.stringify(data, null, 1)}</pre> */}
 
-      <p
+      <article
         dangerouslySetInnerHTML={{
           __html: home[0].html,
         }}
         itemProp="write-up"
-      />
+      ></article>
     </Layout>
   )
 }
@@ -32,12 +32,11 @@ export default Home
 export const pageQuery = graphql`
   query {
     allImageSharp(
-      filter: { fluid: { originalName: { regex: "/thumbnail/gi" } } }
+      filter: { fluid: { originalImg: { regex: "/thumbnail/gi" } } }
     ) {
       edges {
         node {
           fluid {
-            originalName
             ...GatsbyImageSharpFluid
           }
         }

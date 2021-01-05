@@ -17,7 +17,7 @@ const Elisha = ({ data }) => {
       <h1>Pastor Elisha Satvinder</h1>
       <p>Senior Pastor</p>
       <Image fixed={data.allImageSharp.edges[0].node.fixed} />
-      <main dangerouslySetInnerHTML={{ __html: content.html }}></main>
+      <article dangerouslySetInnerHTML={{ __html: content.html }}></article>
     </Layout>
   )
 }

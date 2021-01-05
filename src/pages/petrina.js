@@ -16,7 +16,7 @@ const Petrina = ({ data }) => {
       <SEO title="Petrina Satvinder" />
       <h1>Petrina Satvinder</h1>
       <Image fixed={data.allImageSharp.edges[0].node.fixed} />
-      <main dangerouslySetInnerHTML={{ __html: content.html }}></main>
+      <article dangerouslySetInnerHTML={{ __html: content.html }}></article>
     </Layout>
   )
 }
