@@ -21,6 +21,6 @@ Without a doubt we know that these are disciplines that we have to build daily. 
    2. They reflect our own spiritual condition and attitude
    3. Our commitment towards our families and the next generation
 
-To listen to the audio of the sermon, please click the PLAY button below or visit our Soundcloud page:
+To listen to the audio of the sermon visit our Soundcloud page:
 
 <https://soundcloud.com/user-640599894/301218a>
