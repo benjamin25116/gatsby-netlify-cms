@@ -40,7 +40,7 @@ export const pageQuery = graphql`
       }
     }
     allImageSharp(
-      filter: { fixed: { originalName: { regex: "/foo seng/gi" } } }
+      filter: { fixed: { originalName: { regex: "/fooseng/gi" } } }
     ) {
       edges {
         node {
