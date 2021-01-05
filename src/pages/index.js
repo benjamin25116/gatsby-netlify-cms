@@ -14,7 +14,7 @@ const Home = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Home" />
-      <Image fluid={data.allImageSharp.edges[0].node.fluid} />
+      {/* <Image fluid={data.allImageSharp.edges[0].node.fluid} /> */}
       {/* <pre>{JSON.stringify(data.allImageSharp.edges[0].node.fluid, null, 1)}</pre> */}
 
       <p
