@@ -21,6 +21,12 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "string" }
+      - {
+          label: "Site page",
+          name: "site-page",
+          widget: "hidden",
+          default: false,
+        }
       - label: "Cover Image"
         name: "image"
         widget: "image"
@@ -35,7 +41,7 @@ collections:
     label: "Site"
     label_singular: "Page"
     folder: "content/site"
-    create: true
+    create: false
     slug: "index"
     media_folder: ""
     public_folder: ""
