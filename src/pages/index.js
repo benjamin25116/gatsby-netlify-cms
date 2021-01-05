@@ -14,7 +14,8 @@ const Home = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Home" />
-      <Image fluid={data.imageSharp.fluid} />
+      <Image fluid={data.allImageSharp.edges[0].node.fluid} />
+      {/* <pre>{JSON.stringify(data.allImageSharp.edges[0].node.fluid, null, 1)}</pre> */}
 
       <p
         dangerouslySetInnerHTML={{
@@ -30,9 +31,16 @@ export default Home
 
 export const pageQuery = graphql`
   query {
-    imageSharp(fluid: { originalName: { regex: "/thumbnail/ig" } }) {
-      fluid {
-        ...GatsbyImageSharpFluid
+    allImageSharp(
+      filter: { fluid: { originalName: { regex: "/thumbnail/gi" } } }
+    ) {
+      edges {
+        node {
+          fluid {
+            originalName
+            ...GatsbyImageSharpFluid
+          }
+        }
       }
     }
     site {
