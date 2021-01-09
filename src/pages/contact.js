@@ -39,27 +39,27 @@ const Contact = ({ data }) => {
         action="/contact-thank-you"
         data-netlify="true"
       >
-        <label htmlFor="name">
+        <label>
           Your Name
           <input type="text" name="name" placeholder="Your Name" />
         </label>
         <br />
-        <label htmlFor="email">
+        <label>
           Your Email
           <input type="text" name="email" placeholder="Your Email" />
         </label>
         <br />
-        <label htmlFor="subject">
+        <label>
           Subject
           <input type="text" name="subject" placeholder="Subject" />
         </label>
         <br />
-        <label htmlFor="message">
+        <label>
           Your Message
           <textarea name="message" placeholder="Your message" />
         </label>
         <br />
-        <button type="submit">Submit</button>
+        <button type="submit">Send</button>
       </form>
     </Layout>
   )
