@@ -4,21 +4,22 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const Beliefs = ({ data }) => {
+const SundaySchool = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const [content] = data.allMarkdownRemark.nodes.filter(
-    node => node.frontmatter.title === "Beliefs"
+    node => node.frontmatter.title === "Sunday School"
   )
 
   return (
     <Layout title={siteTitle}>
-      <SEO title="Beliefs" />
+      <SEO title="Sunday School" />
+      <h1>Sunday School</h1>
       <article dangerouslySetInnerHTML={{ __html: content.html }}></article>
     </Layout>
   )
 }
 
-export default Beliefs
+export default SundaySchool
 
 export const pageQuery = graphql`
   query {

@@ -6,7 +6,7 @@ module.exports = {
       summary: `a vibrant community of followers of Christ in Sentul, Kuala Lumpur.`,
     },
     description: `A one-stop location for everything related to New Covenant Community in Sentul.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    siteUrl: `https://www.nccsentul.com/`,
     social: {
       facebook: `nccmalaysia`,
       youtube: `NCC Malaysia`,
