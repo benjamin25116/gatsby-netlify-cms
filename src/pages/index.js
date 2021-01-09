@@ -17,8 +17,23 @@ const Home = ({ data, location }) => {
       {data.allFile.edges[0] ? (
         <Image fluid={data.allFile.edges[0].node.childImageSharp.fluid} />
       ) : null}
-      {/* <pre>{JSON.stringify(data, null, 1)}</pre> */}
-
+      <pre>{JSON.stringify(data.allMarkdownRemark.nodes[4], null, 1)}</pre>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/rr26dwyhlYc"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/5qap5aO4i9A"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
       <article
         dangerouslySetInnerHTML={{
           __html: home[0].html,
@@ -36,7 +51,7 @@ export const pageQuery = graphql`
     allFile(
       filter: {
         relativePath: { regex: "/home/gi" }
-        extension: { regex: "/(png)|(jpg)|(jpeg)/gi" }
+        extension: { regex: "/(.*).(png)|(jpg)|(jpeg)/gi" }
       }
     ) {
       edges {

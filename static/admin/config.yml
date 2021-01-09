@@ -49,6 +49,12 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Site page", name: "site-page", widget: "boolean" }
+      - {
+          label: "Embed src",
+          name: "embed-src",
+          widget: "string",
+          required: false,
+        }
       - label: "Site Banner"
         name: "banner"
         widget: "image"
