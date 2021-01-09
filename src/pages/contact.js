@@ -33,7 +33,12 @@ const Contact = ({ data }) => {
         We'd love to hear from you. Please use the form below to send us your
         enquiry.
       </p>
-      <form name="Contact Us" netlify method="POST" action="/contact-thank-you">
+      <form
+        name="Contact Us"
+        method="POST"
+        action="/contact-thank-you"
+        data-netlify="true"
+      >
         <label htmlFor="name">
           Your Name
           <input type="text" name="name" placeholder="Your Name" />
@@ -54,7 +59,7 @@ const Contact = ({ data }) => {
           <textarea name="message" placeholder="Your message" />
         </label>
         <br />
-        <input type="submit" />
+        <button type="submit">Submit</button>
       </form>
     </Layout>
   )
