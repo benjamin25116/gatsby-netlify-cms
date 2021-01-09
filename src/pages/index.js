@@ -7,9 +7,10 @@ import Image from "gatsby-image"
 
 const Home = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const home = data.allMarkdownRemark.nodes.filter(
+  const [home] = data.allMarkdownRemark.nodes.filter(
     node => node.frontmatter.title === "Home"
   )
+  const embed_src = home.frontmatter.embed_src
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -17,26 +18,20 @@ const Home = ({ data, location }) => {
       {data.allFile.edges[0] ? (
         <Image fluid={data.allFile.edges[0].node.childImageSharp.fluid} />
       ) : null}
-      <pre>{JSON.stringify(data.allMarkdownRemark.nodes[4], null, 1)}</pre>
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/rr26dwyhlYc"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/5qap5aO4i9A"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+      {embed_src ? (
+        <iframe
+          width="560"
+          height="315"
+          src={embed_src}
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      ) : null}
+
       <article
         dangerouslySetInnerHTML={{
-          __html: home[0].html,
+          __html: home.html,
         }}
         itemProp="write-up"
       ></article>
@@ -78,6 +73,7 @@ export const pageQuery = graphql`
         frontmatter {
           title
           site_page
+          embed_src
         }
         html
       }
