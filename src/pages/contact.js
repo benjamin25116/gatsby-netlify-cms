@@ -34,31 +34,35 @@ const Contact = ({ data }) => {
         enquiry.
       </p>
       <form
-        name="Contact Us"
+        name="contact"
         method="POST"
         action="/contact-thank-you"
         data-netlify="true"
       >
-        <label>
-          Your Name
-          <input type="text" name="name" placeholder="Your Name" />
-        </label>
-        <br />
-        <label>
-          Your Email
-          <input type="text" name="email" placeholder="Your Email" />
-        </label>
-        <br />
-        <label>
-          Subject
-          <input type="text" name="subject" placeholder="Subject" />
-        </label>
-        <br />
-        <label>
-          Your Message
-          <textarea name="message" placeholder="Your message" />
-        </label>
-        <br />
+        <p>
+          <label>
+            Your Name
+            <input type="text" name="name" placeholder="Your Name" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Your Email
+            <input type="text" name="email" placeholder="Your Email" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Subject
+            <input type="text" name="subject" placeholder="Subject" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Your Message
+            <textarea name="message" placeholder="Your message" />
+          </label>
+        </p>
         <button type="submit">Send</button>
       </form>
     </Layout>
