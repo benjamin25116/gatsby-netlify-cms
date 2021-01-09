@@ -39,6 +39,7 @@ const Contact = ({ data }) => {
         action="/contact-thank-you"
         data-netlify="true"
       >
+        <input name="form-name" value="contact" type="hidden" />
         <p>
           <label>
             Your Name
