@@ -37,11 +37,42 @@ collections:
           widget: "markdown",
           hint: "Post main content goes here.",
         }
+  - name: "gallery"
+    label: "Gallery"
+    label_singular: "Album"
+    folder: "content/gallery"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{title}}/index"
+    editor:
+      preview: false
+    fields:
+      - { label: "Album Title", name: "album-title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "string" }
+      - {
+          label: "Site page",
+          name: "site-page",
+          widget: "hidden",
+          default: false,
+        }
+      - widget: list
+        fields:
+          - { label: "Image Title", name: "image-title", widget: "string" }
+          - {
+              label: "Image Description",
+              name: "image-description",
+              widget: "string",
+            }
+          - { label: "Image", name: "image", widget: "image" }
   - name: "site"
     label: "Site"
     label_singular: "Page"
     folder: "content/site"
     create: false
+    delete: false
     slug: "index"
     media_folder: ""
     public_folder: ""
