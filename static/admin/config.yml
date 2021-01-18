@@ -59,6 +59,8 @@ collections:
           default: false,
         }
       - widget: list
+        name: "list-name"
+        label: "List Label"
         fields:
           - { label: "Image Title", name: "image-title", widget: "string" }
           - {
