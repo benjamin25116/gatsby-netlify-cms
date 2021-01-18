@@ -59,16 +59,15 @@ collections:
           default: false,
         }
       - widget: list
-        name: "list-name"
-        label: "List Label"
+        name: "image"
+        label: "Image"
         fields:
-          - { label: "Image Title", name: "image-title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
           - {
               label: "Image Description",
               name: "image-description",
               widget: "string",
             }
-          - { label: "Image", name: "image", widget: "image" }
   - name: "site"
     label: "Site"
     label_singular: "Page"
