@@ -1,9 +1,9 @@
 ---
-title: Mother's Day
-date: 2021-01-19T17:31:39.197Z
-description: Mother's Day celebration
-album: true
+title: Mother's Day Celebration
+date: 2018-05-05T02:30:39.197Z
+description: Mother's Day celebration with the NCC family.
 site-page: false
+album: true
 image:
   - image: Mothers-Day-2.jpg
     image-description: Pendi and Zeroberto sharing a laugh.
