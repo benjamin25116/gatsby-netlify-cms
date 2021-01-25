@@ -1,6 +1,6 @@
 ---
 title: Petrina
-site-page: true
+site_page: true
 banner: ps.petrina.jpg
 ---
 She is currently the CEO as well as the Principal of Dignity for Children Foundation. 

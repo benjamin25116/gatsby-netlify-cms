@@ -5,7 +5,7 @@ description: We must now allow God to work in our lives as we learn from His
   word what it means to be a believer, how to begin to live this new life He has
   given us. We become part of the community of faith. Everyday God is working in
   our lives.
-blog-post: true
+blog_post: true
 ---
 It all begins with us making that very important decision of giving our lives to Christ, admitting our need for a Savior, making Him our Lord and Saviour. We receive His forgiveness and experience His acceptance, love and purpose. It does not and cannot end there.
 

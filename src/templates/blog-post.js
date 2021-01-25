@@ -47,7 +47,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <li>
             {previous && (
               <Link to={"/blog" + previous.fields.slug} rel="prev">
-                {previous.frontmatter.site_page ||
+                {previous.frontmatter.blog_post &&
                   "←" + previous.frontmatter.title}
               </Link>
             )}
@@ -55,7 +55,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <li>
             {next && (
               <Link to={"/blog" + next.fields.slug} rel="next">
-                {next.frontmatter.site_page || next.frontmatter.title + "→"}
+                {next.frontmatter.blog_post && next.frontmatter.title + "→"}
               </Link>
             )}
           </li>
@@ -94,7 +94,7 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-        site_page
+        blog_post
       }
     }
     next: markdownRemark(id: { eq: $nextPostId }) {
@@ -103,7 +103,7 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-        site_page
+        blog_post
       }
     }
   }

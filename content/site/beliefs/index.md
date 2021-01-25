@@ -1,6 +1,6 @@
 ---
 title: Beliefs
-site-page: true
+site_page: true
 banner: encounter-2017-group-photo.jpg
 ---
 

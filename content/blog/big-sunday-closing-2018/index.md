@@ -3,7 +3,7 @@ title: "Big Sunday: Closing 2018"
 date: 2018-12-29T17:05:59.836Z
 description: "One action, one attitude, one word will capture what we want to
   pursue 2019: PRIORITY."
-blog-post: true
+blog_post: true
 ---
 One action, one attitude, one word will capture what we want to pursue 2019: PRIORITY
 

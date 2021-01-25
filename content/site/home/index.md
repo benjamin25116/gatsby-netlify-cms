@@ -1,6 +1,6 @@
 ---
 title: Home
-site-page: true
+site_page: true
 embed-src: ""
 banner: thumbnail-3.jpg
 ---
