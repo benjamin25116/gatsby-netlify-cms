@@ -6,9 +6,6 @@ import SEO from "../components/seo"
 
 const Contact = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  // const [content] = data.allMarkdownRemark.nodes.filter(
-  //   node => node.frontmatter.title === "GenY"
-  // )
 
   return (
     <Layout title={siteTitle}>

@@ -4,7 +4,7 @@ date: 2019-02-02T17:18:57.202Z
 description: In Preparation towards a season of focused prayer and fasting. It
   is always an excellent decision to start a new season by setting aside 21 days
   for fasting and prayer.
-site-page: false
+blog-post: true
 ---
 In Preparation towards a season of focused prayer and fasting. It is always an excellent decision to start a new season by setting aside 21 days for fasting and prayer. This is a time to abstain from food for spiritual growth, for definite answers to prayer, to set aside more time for prayer, and to set our heart toward seeking and waiting upon the Lord. By focusing our time in reading and meditating the Word of God, it will maximise the season’s of fruitfulness.
 

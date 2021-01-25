@@ -22,10 +22,10 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "string" }
       - {
-          label: "Site page",
-          name: "site-page",
+          label: "Blog post",
+          name: "blog-post",
           widget: "hidden",
-          default: false,
+          default: true,
         }
       - label: "Cover Image"
         name: "image"
@@ -58,12 +58,6 @@ collections:
           picker_utc: false,
         }
       - { label: "Description", name: "description", widget: "string" }
-      - {
-          label: "Site page",
-          name: "site-page",
-          widget: "hidden",
-          default: false,
-        }
       - { label: "Album", name: "album", widget: "hidden", default: true }
       - widget: list
         name: "image"
@@ -87,7 +81,12 @@ collections:
     path: "{{title}}/index"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Site page", name: "site-page", widget: "boolean" }
+      - {
+          label: "Site page",
+          name: "site-page",
+          widget: "hidden",
+          default: true,
+        }
       - {
           label: "Embed src",
           name: "embed-src",

@@ -3,7 +3,7 @@ title: Go, Make Disciples
 date: 2019-01-05T17:14:00.003Z
 description: We are so connected digitally. In fact, this is the most digitally
   connected generation ever. Yet, loneliness, depression is at the highest ever.
-site-page: false
+blog-post: true
 ---
 We are so connected digitally. In fact, this is the most digitally connected generation ever. Yet, loneliness, depression is at the highest ever. Social media is in your face all the time. In fact, many cannot communicate without it. We look at the likes we get and it gives us a sense of security and popularity. We consider that connecting with people. Yet, people are lonely. Many get cheated of their money and even get sexually entangled, even blackmailed while looking for love and companionship through the social media.
 

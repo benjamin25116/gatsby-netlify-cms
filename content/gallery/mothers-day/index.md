@@ -3,7 +3,6 @@ title: Mother's Day
 date: 2021-01-19T17:31:39.197Z
 description: Mother's Day celebration
 album: true
-site-page: false
 image:
   - image: Mothers-Day-2.jpg
     image-description: Pendi and Zeroberto sharing a laugh.
