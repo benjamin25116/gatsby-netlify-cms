@@ -10,13 +10,18 @@ const Elisha = ({ data }) => {
   const [content] = data.allMarkdownRemark.nodes.filter(
     node => node.frontmatter.title === "Pastor Elisha"
   )
-
+  const [profilePic] = data.allFile.edges.filter(
+    edge => edge.node.childImageSharp
+  )
+  
   return (
     <Layout title={siteTitle}>
       <SEO title="Pastor Elisha" />
       <h1>Pastor Elisha Satvinder</h1>
       <p>Senior Pastor</p>
-      <Image fixed={data.allImageSharp.edges[0].node.fixed} />
+      {profilePic ? (
+        <Image fixed={profilePic.node.childImageSharp.fixed} />
+      ) : null}
       <article dangerouslySetInnerHTML={{ __html: content.html }}></article>
     </Layout>
   )
@@ -39,13 +44,14 @@ export const pageQuery = graphql`
         }
       }
     }
-    allImageSharp(
-      filter: { fixed: { originalName: { regex: "/elisha/gi" } } }
-    ) {
+    allFile(filter: { relativeDirectory: { eq: "pastor-elisha" } }) {
       edges {
         node {
-          fixed {
-            ...GatsbyImageSharpFixed
+          name
+          childImageSharp {
+            fixed {
+              ...GatsbyImageSharpFixed
+            }
           }
         }
       }

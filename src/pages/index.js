@@ -1,9 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Image from "gatsby-image"
 
 const Home = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -11,12 +11,15 @@ const Home = ({ data, location }) => {
     node => node.frontmatter.title === "Home"
   )
   const embed_src = home.frontmatter.embed_src
+  const [homeBanner] = data.allFile.edges.filter(
+    edge => edge.node.childImageSharp
+  )
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Home" />
-      {data.allFile.edges[0] ? (
-        <Image fluid={data.allFile.edges[0].node.childImageSharp.fluid} />
+      {homeBanner ? (
+        <Image fluid={homeBanner.node.childImageSharp.fluid} />
       ) : null}
       {embed_src ? (
         <iframe
@@ -43,12 +46,7 @@ export default Home
 
 export const pageQuery = graphql`
   query {
-    allFile(
-      filter: {
-        relativePath: { regex: "/home/gi" }
-        extension: { regex: "/(.*).(png)|(jpg)|(jpeg)/gi" }
-      }
-    ) {
+    allFile(filter: { relativeDirectory: { eq: "home" } }) {
       edges {
         node {
           name

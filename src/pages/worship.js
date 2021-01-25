@@ -10,15 +10,16 @@ const Worship = ({ data }) => {
   const [content] = data.allMarkdownRemark.nodes.filter(
     node => node.frontmatter.title === "Worship ministry"
   )
+  const images = data.allFile.edges.filter(edge => edge.node.childImageSharp)
 
   return (
     <Layout title={siteTitle}>
       <SEO title="Worship Team" />
       <h1>Worship Team</h1>
 
-      {data.allFile.edges.map(edge => (
-        <Image fluid={edge.node.childImageSharp.fluid} />
-      ))}
+      {images
+        ? images.map(edge => <Image fluid={edge.node.childImageSharp.fluid} />)
+        : null}
       <article dangerouslySetInnerHTML={{ __html: content.html }}></article>
     </Layout>
   )
@@ -41,12 +42,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allFile(
-      filter: {
-        name: { regex: "/(worship).*/gi" }
-        dir: { regex: "/worship-ministry/gi" }
-      }
-    ) {
+    allFile(filter: { relativeDirectory: { eq: "worship-ministry" } }) {
       edges {
         node {
           name
