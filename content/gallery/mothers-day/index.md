@@ -1,7 +1,7 @@
 ---
-title: Mother's Day
-date: 2021-01-19T17:31:39.197Z
-description: Mother's Day celebration
+title: Mother's Day Celebration
+date: 2018-05-05T02:30:39.197Z
+description: Mother's Day celebration with the NCC family.
 album: true
 image:
   - image: Mothers-Day-2.jpg
