@@ -2,6 +2,7 @@
 title: XEE Training
 date: 2021-01-18T17:31:39.197Z
 description: XEE Training conducted in-house.
+album: true
 site-page: false
 image:
   - image: xee-training-4.jpg

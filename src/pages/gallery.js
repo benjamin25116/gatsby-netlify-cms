@@ -7,27 +7,42 @@ import SEO from "../components/seo"
 
 const Gallery = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const images = data.allFile.edges.filter(edge => edge.node.childImageSharp)
-  const titles = data.allFile.edges.filter(
-    edge => edge.node.childImageSharp === null
-  )
+
   return (
     <Layout title={siteTitle}>
       <SEO title="Gallery" />
       <h1>New Covenant Community Gallery</h1>
-      Create an array of relativeDirectory names to list down the albums available. Then conditional render each album according to the relativeDirectory of the node. 
-      {/* {titles.map(edge => (
-        <>
-          <h2>{edge.node.childMarkdownRemark.frontmatter.title}</h2>
-          <p>{edge.node.childMarkdownRemark.frontmatter.description}</p>
-        </>
-      ))}
+      {data.allMarkdownRemark.nodes.map(albumData => (
+        <section>
+          <h2>{albumData.frontmatter.title}</h2>
+          <span>
+            {albumData.frontmatter.date} • {albumData.frontmatter.description}
+          </span>
 
-      {images.map(edge => (
-        <Image fluid={edge.node.childImageSharp.fluid} />
-      ))} */}
-      <pre>{JSON.stringify(data.allFile, null, 2)}</pre>
-      {/* <Image fixed={data.allImageSharp.edges[0].node.fixed} /> */}
+          {/* shape of the data is shown below */}
+          {/* <pre>
+            {JSON.stringify(
+              data.allFile.edges.filter(
+                edge =>
+                  edge.node.relativeDirectory ===
+                  albumData.fields.slug.replace(/^\/|\/$/g, "")
+              ),
+              null,
+              2
+            )}
+          </pre> */}
+
+          {data.allFile.edges
+            .filter(
+              edge =>
+                edge.node.relativeDirectory ===
+                albumData.fields.slug.replace(/^\/|\/$/g, "")
+            )
+            .map(edge => (
+              <Image fluid={edge.node.childImageSharp.fluid} />
+            ))}
+        </section>
+      ))}
     </Layout>
   )
 }
@@ -41,22 +56,28 @@ export const pageQuery = graphql`
         title
       }
     }
-    allFile(filter: { dir: { regex: "/gallery/gi" } }) {
+    allFile(filter: { extension: { regex: "/(.*).(png)|(jpg)|(jpeg)/gi" } }) {
       edges {
         node {
           relativeDirectory
-          childMarkdownRemark {
-            frontmatter {
-              title
-              description
-              date(formatString: "DD-MMM, YYYY")
-            }
-          }
           childImageSharp {
             fluid {
+              originalName
               ...GatsbyImageSharpFluid
             }
           }
+        }
+      }
+    }
+    allMarkdownRemark(filter: { frontmatter: { album: { eq: true } } }) {
+      nodes {
+        frontmatter {
+          title
+          description
+          date(formatString: "DD.MM.YYYY")
+        }
+        fields {
+          slug
         }
       }
     }

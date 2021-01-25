@@ -64,6 +64,7 @@ collections:
           widget: "hidden",
           default: false,
         }
+      - { label: "Album", name: "album", widget: "hidden", default: true }
       - widget: list
         name: "image"
         label: "Image"
