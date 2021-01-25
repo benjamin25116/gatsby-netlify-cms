@@ -50,7 +50,13 @@ collections:
       preview: false
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          date_format: "DD.MM.YYYY",
+          picker_utc: false,
+        }
       - { label: "Description", name: "description", widget: "string" }
       - {
           label: "Site page",
