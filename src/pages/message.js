@@ -28,6 +28,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
     <SEO title="All Messages" />
+    <section>
       <ul style={{ listStyle: `none` }}>
         {videos.map(video => {
           const title = video.node.title
@@ -56,6 +57,8 @@ const BlogIndex = ({ data, location }) => {
           }
         })}
       </ul>
+      <a href='https://www.youtube.com/channel/UCMPRCAVfEvwmpFR5BfGweGQ/videos'>More videos on our YouTube channel</a>
+      </section>
 
       <ul style={{ listStyle: `none` }}>
         {posts.map(post => {

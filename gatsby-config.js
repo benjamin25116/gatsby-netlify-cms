@@ -18,7 +18,7 @@ module.exports = {
       resolve: `gatsby-source-youtube-v3`,
       options: {
         channelId: [`UCMPRCAVfEvwmpFR5BfGweGQ`],
-        apiKey: process.env.GATSBY_YOUTUBE_API, // hide with dotenv later
+        apiKey: process.env.GATSBY_YOUTUBE_API, 
         maxVideos: 10,
       },
     },
