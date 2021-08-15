@@ -26,7 +26,15 @@ const Home = ({ data, location }) => {
       
       {/* Add embedded livestream to homepage. It's a proof of concept to Jonathan. */}
       {embed_src ? (
-        {embed_src}
+        <iframe
+          width="560"
+          height="315"
+          src={embed_src}
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title="Livestream of Sunday Celebration"
+        ></iframe>
       ) : null}
 
       <article
