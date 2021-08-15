@@ -15,6 +15,14 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-source-youtube-v3`,
+      options: {
+        channelId: [`UCMPRCAVfEvwmpFR5BfGweGQ`],
+        apiKey: YOUTUBE_API, // hide with dotenv later
+        maxVideos: 10,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,

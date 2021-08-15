@@ -8,7 +8,7 @@ const Header = () => {
     <header>
       <img
         src={Logo}
-        alt="Logo of NCC: the words 'New Covenant Community' shaped as a circle."
+        alt="New Covenant Community Church logo."
       />
       <Menu />
     </header>

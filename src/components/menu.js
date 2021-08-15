@@ -51,7 +51,7 @@ const Menu = () => {
           </Link>
         </li>
         <li>
-          <Link to="/blog">Blog</Link>
+          <Link to="/message">Messages</Link>
         </li>
         <li>
           <Link to="/gallery">Gallery</Link>

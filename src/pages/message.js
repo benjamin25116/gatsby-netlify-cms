@@ -1,23 +1,25 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
+
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  const videos = data.allYoutubeVideo.edges
 
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <SEO title="All Blog Posts" />
-        <Bio />
+        <SEO title="All Messages" />
+        
         <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
+          Something went wrong. Our posts are missing. Would you be so kind to report this to us and check back later please? 
+          {/* No blog posts found. Add markdown posts to "content/blog" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
+          gatsby-config.js). */}
         </p>
       </Layout>
     )
@@ -25,10 +27,37 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All Blog Posts" />
-      <Bio />
+    <SEO title="All Messages" />
+      <ul style={{ listStyle: `none` }}>
+        {videos.map(video => {
+          const title = video.node.title
+          if (videos){
+            return (
+              <li key={video.node.videoId}>
+                <article
+                  className="post-list-item"
+                  itemScope
+                  itemType="http://schema.org/Article"
+                >
+                  <header>
+                    <h2>
+                      <a href={`https://www.youtube.com/watch?v=${video.node.videoId}`}>
+                        <span itemProp="headline">{title}</span>
+                      </a>
+                      
+                    </h2>                  
+                  </header>
+                  <iframe width="560" height="315" 
+                  src={`https://www.youtube.com/embed/${video.node.videoId}`} 
+                  title={title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </article>
+              </li>
+            )
+          }
+        })}
+      </ul>
 
-      <ol style={{ listStyle: `none` }}>
+      <ul style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
           if (post.frontmatter.blog_post) {
@@ -41,7 +70,7 @@ const BlogIndex = ({ data, location }) => {
                 >
                   <header>
                     <h2>
-                      <Link to={"/blog" + post.fields.slug} itemProp="url">
+                      <Link to={"/message" + post.fields.slug} itemProp="url">
                         <span itemProp="headline">{title}</span>
                       </Link>
                     </h2>
@@ -60,7 +89,7 @@ const BlogIndex = ({ data, location }) => {
             )
           }
         })}
-      </ol>
+      </ul>
     </Layout>
   )
 }
@@ -87,6 +116,17 @@ export const pageQuery = graphql`
           blog_post
         }
         html
+      }
+    }
+    allYoutubeVideo {
+      edges {
+        node {
+          title
+          thumbnail {
+            url
+          }
+          videoId
+        }
       }
     }
   }

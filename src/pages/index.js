@@ -18,9 +18,13 @@ const Home = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Home" />
+
+      
       {homeBanner ? (
         <Image fluid={homeBanner.node.childImageSharp.fluid} />
       ) : null}
+      
+      {/* Add embedded livestream to homepage. It's a proof of concept to Jonathan. */}
       {embed_src ? (
         <iframe
           width="560"
@@ -29,6 +33,7 @@ const Home = ({ data, location }) => {
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
+          title="Livestream of Sunday Celebration"
         ></iframe>
       ) : null}
 
