@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Image from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -14,33 +14,30 @@ const YoungAdults = ({ data }) => {
       <SEO title="Young Adults" />
       <h1>Young Adults</h1>
       {images
-        ? images.map(edge => <Image fluid={edge.node.childImageSharp.fluid} />)
+        ? images.map(edge => <GatsbyImage image={edge.node.childImageSharp.gatsbyImageData} />)
         : null}
       <article dangerouslySetInnerHTML={{ __html: content.html }}></article>
     </Layout>
-  )
+  );
 }
 
 export default YoungAdults
 
-export const pageQuery = graphql`
-  query {
-    allMarkdownRemark(filter: {frontmatter: {title: {regex: "/young adults/i"}}}) {
-      nodes {
-        html
-      }
+export const pageQuery = graphql`{
+  allMarkdownRemark(filter: {frontmatter: {title: {regex: "/young adults/i"}}}) {
+    nodes {
+      html
     }
-    allFile(filter: { relativeDirectory: { eq: "young-adults" } }) {
-      edges {
-        node {
-          name
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
+  }
+  allFile(filter: {relativeDirectory: {eq: "young-adults"}}) {
+    edges {
+      node {
+        name
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }
   }
+}
 `

@@ -1,18 +1,24 @@
 import React from "react"
-import Logo from "../../content/assets/ncc-logo.svg"
+import styled from "styled-components"
 
+import Logo from "../../content/assets/ncc-logo.svg"
 import Menu from "./menu"
+
+const Navigation = styled.header`
+display: flex;
+flex-direction: row;
+`
 
 const Header = () => {
   return (
-    <header>
+    <Navigation>
       <img
         src={Logo}
         alt="New Covenant Community Church logo."
         style={{width: '150px'}}
       />
       <Menu />
-    </header>
+    </Navigation>
   )
 }
 

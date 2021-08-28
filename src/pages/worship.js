@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Image from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -15,38 +15,35 @@ const Worship = ({ data }) => {
       <h1>Worship Team</h1>
 
       {images
-        ? images.map(edge => <Image fluid={edge.node.childImageSharp.fluid} />)
+        ? images.map(edge => <GatsbyImage image={edge.node.childImageSharp.gatsbyImageData} />)
         : null}
       <article dangerouslySetInnerHTML={{ __html: content.html }}></article>
     </Layout>
-  )
+  );
 }
 
 export default Worship
 
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
+export const pageQuery = graphql`{
+  site {
+    siteMetadata {
+      title
     }
-    allMarkdownRemark(filter: {frontmatter: {title: {regex: "/worship/i"}}}) {
-      nodes {
-        html
-      }
+  }
+  allMarkdownRemark(filter: {frontmatter: {title: {regex: "/worship/i"}}}) {
+    nodes {
+      html
     }
-    allFile(filter: { relativeDirectory: { eq: "worship-ministry" } }) {
-      edges {
-        node {
-          name
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
+  }
+  allFile(filter: {relativeDirectory: {eq: "worship-ministry"}}) {
+    edges {
+      node {
+        name
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }
   }
+}
 `

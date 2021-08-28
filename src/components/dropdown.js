@@ -1,10 +1,9 @@
 import React from "react"
 
-const Dropdown = ({ children, name }) => {
+
+const Dropdown = ({ children }) => {
   return (
-    <>
       <ul>{children}</ul>
-    </>
   )
 }
 

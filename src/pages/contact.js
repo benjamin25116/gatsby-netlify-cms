@@ -1,5 +1,4 @@
 import React from "react"
-import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -24,6 +23,7 @@ const Contact = () => {
         allowfullscreen=""
         aria-hidden="false"
         tabindex="0"
+        title="Map to New Covenant Community Church"
       ></iframe>
       <p>
         We'd love to hear from you. Please use the form below to send us your

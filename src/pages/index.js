@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Image from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -18,7 +18,7 @@ const Home = ({ data }) => {
 
       <section className="home--banner">
       {homeBanner ? (
-        <Image fluid={homeBanner.node.childImageSharp.fluid} />
+        <GatsbyImage image={homeBanner.node.childImageSharp.gatsbyImageData} />
         ) : null}
       </section>
       
@@ -31,29 +31,26 @@ const Home = ({ data }) => {
         itemProp="write-up"
       ></article>
     </Layout>
-  )
+  );
 }
 
 export default Home
 
-export const pageQuery = graphql`
-  query {
-      allFile(filter: {relativeDirectory: {eq: "home"}}) {
-        edges {
-          node {
-            name
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
+export const pageQuery = graphql`{
+  allFile(filter: {relativeDirectory: {eq: "home"}}) {
+    edges {
+      node {
+        name
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
-      allMarkdownRemark(filter: {frontmatter: {title: {regex: "/home/i"}}}) {
-        nodes {
-          html
-        }
-      }
+    }
   }
+  allMarkdownRemark(filter: {frontmatter: {title: {regex: "/home/i"}}}) {
+    nodes {
+      html
+    }
+  }
+}
 `

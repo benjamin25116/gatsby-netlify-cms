@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Image from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -38,12 +38,12 @@ const Gallery = ({ data }) => {
                 albumData.fields.slug.replace(/^\/|\/$/g, "")
             )
             .map(edge => (
-              <Image fluid={edge.node.childImageSharp.fluid} />
+              <GatsbyImage image={edge.node.childImageSharp.gatsbyImageData} />
             ))}
         </section>
       ))}
     </Layout>
-  )
+  );
 }
 
 export default Gallery

@@ -1,9 +1,15 @@
 import React from "react"
 import Header from "./header"
+import styled from "styled-components"
+
+const Wrapper = styled.div`
+max-width: 1000px;
+margin: 0 auto;
+`
 
 const Layout = ({ children }) => {
   return (
-    <div className="global-wrapper">
+    <Wrapper>
       <Header />
       <main>{children}</main>
       <footer>
@@ -11,7 +17,7 @@ const Layout = ({ children }) => {
         {` `}
         <a href="https://www.gatsbyjs.com">Gatsby</a>
       </footer>
-    </div>
+    </Wrapper>
   )
 }
 

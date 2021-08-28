@@ -1,18 +1,37 @@
 import React from "react"
 import { Link } from "gatsby"
-import Dropdown from "./dropdown"
+import styled from "styled-components"
+
+
+
+const MenuList = styled.ul`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+list-style: none;
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+`
+
+
+const Navigation = styled.nav`
+width: 100%`
 
 const Menu = () => {
   return (
-    <nav>
-      <ul>
+    <Navigation>
+      <MenuList>
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
           <Link>
             About Us
-            <Dropdown>
+            <ul>
               <li>
                 <Link to="/beliefs">What We Believe</Link>
               </li>
@@ -25,13 +44,13 @@ const Menu = () => {
               <li>
                 <Link to="/pastor-foo-seng">Pastor Foo Seng</Link>
               </li>
-            </Dropdown>
+            </ul>
           </Link>
         </li>
         <li>
           <Link>
             Ministries
-            <Dropdown>
+            <ul>
               <li>
                 <Link to="/worship">Worship Team</Link>
               </li>
@@ -47,7 +66,7 @@ const Menu = () => {
               <li>
                 <Link to="/connect-groups">Connect Groups</Link>
               </li>
-            </Dropdown>
+            </ul>
           </Link>
         </li>
         <li>
@@ -59,8 +78,8 @@ const Menu = () => {
         <li>
           <Link to="/contact">Contact us</Link>
         </li>
-      </ul>
-    </nav>
+      </MenuList>
+    </Navigation>
   )
 }
 
