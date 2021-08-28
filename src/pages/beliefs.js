@@ -1,18 +1,21 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const Beliefs = ({ data }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const [content] = data.allMarkdownRemark.nodes.filter(
-    node => node.frontmatter.title === "Beliefs"
+  const [content] = data.allMarkdownRemark.nodes
+  const image = data.allFile.edges.filter(
+   edge => edge.node.childImageSharp
   )
-
   return (
-    <Layout title={siteTitle}>
+    <Layout>
       <SEO title="Beliefs" />
+      {image
+        ? image.map(edge => <Image fluid={edge.node.childImageSharp.fluid} />)
+        : null}
       <article dangerouslySetInnerHTML={{ __html: content.html }}></article>
     </Layout>
   )
@@ -22,12 +25,7 @@ export default Beliefs
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(filter: { frontmatter: { site_page: { eq: true } } }) {
+    allMarkdownRemark(filter: {frontmatter: {title: {regex: "/beliefs/i"}}}) {
       nodes {
         html
         frontmatter {
@@ -35,5 +33,17 @@ export const pageQuery = graphql`
         }
       }
     }
-  }
+    allFile(filter: { relativeDirectory: { eq: "beliefs" } }) {
+      edges {
+        node {
+          name
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+  }  
 `

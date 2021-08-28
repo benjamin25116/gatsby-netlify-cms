@@ -4,11 +4,10 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const Contact = ({ data }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+const Contact = () => {
 
   return (
-    <Layout title={siteTitle}>
+    <Layout>
       <SEO title="Contact Us" />
       <h1>Contact Us</h1>
       <address>
@@ -68,13 +67,3 @@ const Contact = ({ data }) => {
 }
 
 export default Contact
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`

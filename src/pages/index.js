@@ -4,38 +4,23 @@ import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Livestream from "../components/livestream"
 
-const Home = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const [home] = data.allMarkdownRemark.nodes.filter(
-    node => node.frontmatter.title === "Home"
-  )
-  const embed_src = home.frontmatter.embed_src
+const Home = ({ data }) => {
+  const [home] = data.allMarkdownRemark.nodes
   const [homeBanner] = data.allFile.edges.filter(
     edge => edge.node.childImageSharp
   )
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <SEO title="Home" />
 
-      
       {homeBanner ? (
         <Image fluid={homeBanner.node.childImageSharp.fluid} />
       ) : null}
       
-      {/* Add embedded livestream to homepage. It's a proof of concept to Jonathan. */}
-      {embed_src ? (
-        <iframe
-          width="560"
-          height="315"
-          src={embed_src}
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          title="Livestream of Sunday Celebration"
-        ></iframe>
-      ) : null}
+      <Livestream/>
 
       <article
         dangerouslySetInnerHTML={{
@@ -51,35 +36,22 @@ export default Home
 
 export const pageQuery = graphql`
   query {
-    allFile(filter: { relativeDirectory: { eq: "home" } }) {
-      edges {
-        node {
-          name
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+      allFile(filter: {relativeDirectory: {eq: "home"}}) {
+        edges {
+          node {
+            name
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }
       }
-    }
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        fields {
-          slug
+      allMarkdownRemark(filter: {frontmatter: {title: {regex: "/home/i"}}}) {
+        nodes {
+          html
         }
-        frontmatter {
-          title
-          site_page
-          embed_src
-        }
-        html
       }
-    }
   }
 `

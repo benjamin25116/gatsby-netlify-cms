@@ -6,16 +6,13 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const FooSeng = ({ data }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const [content] = data.allMarkdownRemark.nodes.filter(
-    node => node.frontmatter.title === "Pastor Foo Seng"
-  )
+  const [content] = data.allMarkdownRemark.nodes
   const [profilePic] = data.allFile.edges.filter(
     edge => edge.node.childImageSharp
   )
 
   return (
-    <Layout title={siteTitle}>
+    <Layout>
       <SEO title="Pastor Foo Seng" />
       <h1>Pastor Foo Seng</h1>
       <p>Associate Pastor</p>
@@ -31,17 +28,9 @@ export default FooSeng
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(filter: { frontmatter: { site_page: { eq: true } } }) {
+    allMarkdownRemark(filter: {frontmatter: {title: {regex: "/foo seng/i"}}}) {
       nodes {
         html
-        frontmatter {
-          title
-        }
       }
     }
     allFile(filter: { relativeDirectory: { eq: "pastor-foo-seng" } }) {

@@ -6,14 +6,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const YoungAdults = ({ data }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const [content] = data.allMarkdownRemark.nodes.filter(
-    node => node.frontmatter.title === "Young Adults"
-  )
+  const [content] = data.allMarkdownRemark.nodes
   const images = data.allFile.edges.filter(edge => edge.node.childImageSharp)
 
   return (
-    <Layout title={siteTitle}>
+    <Layout>
       <SEO title="Young Adults" />
       <h1>Young Adults</h1>
       {images
@@ -28,17 +25,9 @@ export default YoungAdults
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(filter: { frontmatter: { site_page: { eq: true } } }) {
+    allMarkdownRemark(filter: {frontmatter: {title: {regex: "/young adults/i"}}}) {
       nodes {
         html
-        frontmatter {
-          title
-        }
       }
     }
     allFile(filter: { relativeDirectory: { eq: "young-adults" } }) {

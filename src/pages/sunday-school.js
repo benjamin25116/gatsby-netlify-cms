@@ -6,14 +6,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const SundaySchool = ({ data }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const [content] = data.allMarkdownRemark.nodes.filter(
-    node => node.frontmatter.title === "Sunday School"
-  )
+  const [content] = data.allMarkdownRemark.nodes
   const images = data.allFile.edges.filter(edge => edge.node.childImageSharp)
 
   return (
-    <Layout title={siteTitle}>
+    <Layout>
       <SEO title="Sunday School" />
       <h1>Sunday School</h1>
       {images
@@ -28,17 +25,9 @@ export default SundaySchool
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(filter: { frontmatter: { site_page: { eq: true } } }) {
+    allMarkdownRemark(filter: {frontmatter: {title: {regex: "/sunday school/i"}}}) {
       nodes {
         html
-        frontmatter {
-          title
-        }
       }
     }
     allFile(filter: { relativeDirectory: { eq: "sunday-school" } }) {

@@ -6,14 +6,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const GenY = ({ data }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const [content] = data.allMarkdownRemark.nodes.filter(
-    node => node.frontmatter.title === "GenY"
-  )
+    const [content] = data.allMarkdownRemark.nodes
   const images = data.allFile.edges.filter(edge => edge.node.childImageSharp)
 
   return (
-    <Layout title={siteTitle}>
+    <Layout>
       <SEO title="GenY Youth" />
       <h1>GenY Youth</h1>
       {images
@@ -28,12 +25,7 @@ export default GenY
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(filter: { frontmatter: { site_page: { eq: true } } }) {
+    allMarkdownRemark(filter: {frontmatter: {title: {regex: "/gen/i"}}}) {
       nodes {
         html
         frontmatter {

@@ -6,10 +6,9 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const Gallery = ({ data }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
 
   return (
-    <Layout title={siteTitle}>
+    <Layout>
       <SEO title="Gallery" />
       <h1>New Covenant Community Gallery</h1>
       {data.allMarkdownRemark.nodes.map(albumData => (
@@ -51,11 +50,6 @@ export default Gallery
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allFile(filter: { extension: { regex: "/(.*).(png)|(jpg)|(jpeg)/gi" } }) {
       edges {
         node {
