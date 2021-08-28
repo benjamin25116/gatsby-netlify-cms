@@ -16,13 +16,15 @@ const Home = ({ data }) => {
     <Layout>
       <SEO title="Home" />
 
+      <section className="home--banner">
       {homeBanner ? (
         <Image fluid={homeBanner.node.childImageSharp.fluid} />
-      ) : null}
+        ) : null}
+      </section>
       
       <Livestream/>
 
-      <article
+      <article className="home--writeup"
         dangerouslySetInnerHTML={{
           __html: home.html,
         }}

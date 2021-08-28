@@ -9,6 +9,7 @@ const Header = () => {
       <img
         src={Logo}
         alt="New Covenant Community Church logo."
+        style={{width: '150px'}}
       />
       <Menu />
     </header>

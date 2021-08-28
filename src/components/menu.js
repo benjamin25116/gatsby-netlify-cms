@@ -53,9 +53,9 @@ const Menu = () => {
         <li>
           <Link to="/message">Messages</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/gallery">Gallery</Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/contact">Contact us</Link>
         </li>

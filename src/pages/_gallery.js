@@ -48,32 +48,32 @@ const Gallery = ({ data }) => {
 
 export default Gallery
 
-export const pageQuery = graphql`
-  query {
-    allFile(filter: { extension: { regex: "/(.*).(png)|(jpg)|(jpeg)/gi" } }) {
-      edges {
-        node {
-          relativeDirectory
-          childImageSharp {
-            fluid {
-              originalName
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-    allMarkdownRemark(filter: { frontmatter: { album: { eq: true } } }) {
-      nodes {
-        frontmatter {
-          title
-          description
-          date(formatString: "DD.MM.YYYY")
-        }
-        fields {
-          slug
-        }
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query {
+//     allFile(filter: { extension: { regex: "/(.*).(png)|(jpg)|(jpeg)/gi" } }) {
+//       edges {
+//         node {
+//           relativeDirectory
+//           childImageSharp {
+//             fluid {
+//               originalName
+//               ...GatsbyImageSharpFluid
+//             }
+//           }
+//         }
+//       }
+//     }
+//     allMarkdownRemark(filter: { frontmatter: { album: { eq: true } } }) {
+//       nodes {
+//         frontmatter {
+//           title
+//           description
+//           date(formatString: "DD.MM.YYYY")
+//         }
+//         fields {
+//           slug
+//         }
+//       }
+//     }
+//   }
+// `

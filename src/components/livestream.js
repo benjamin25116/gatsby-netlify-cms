@@ -20,10 +20,11 @@ const Livestream = () => {
 
     if (source){
         return (
-            <section>
-                <h2>Join us Online</h2>
+            <section className="livestream">
+                <h2 className="livestream--header">Join us Online</h2>
                 <iframe
-                style={{width: '632px', height: '355px'}}
+                className="livestream--video"
+                style={{width: "100%", height: "100%"}}
                 src={source}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
