@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image";
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 const Petrina = ({ data }) => {
   const [content] = data.allMarkdownRemark.nodes
@@ -13,10 +13,10 @@ const Petrina = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Petrina Satvinder" />
+      <Seo title="Petrina Satvinder" />
       <h1>Petrina Satvinder</h1>
       {profilePic ? (
-        <GatsbyImage image={profilePic.node.childImageSharp.gatsbyImageData} />
+        <GatsbyImage image={profilePic.node.childImageSharp.gatsbyImageData} alt="Petrina Satvinder"/>
       ) : null}
       <article dangerouslySetInnerHTML={{ __html: content.html }}></article>
     </Layout>

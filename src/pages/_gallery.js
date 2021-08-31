@@ -3,13 +3,13 @@ import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image";
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 const Gallery = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Gallery" />
+      <Seo title="Gallery" />
       <h1>New Covenant Community Gallery</h1>
       {data.allMarkdownRemark.nodes.map(albumData => (
         <section>

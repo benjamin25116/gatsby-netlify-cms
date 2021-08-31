@@ -1,85 +1,67 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 
+import MenuItem from "./menuItem"
 
+const StyledMenu = styled.ul``
 
-const MenuList = styled.ul`
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-list-style: none;
-a {
-  text-decoration: none;
-}
-li {
-  list-style: none;
-}
-`
-
-
-const Navigation = styled.nav`
-width: 100%`
+const menuItems = [
+  // { destination: "/", label: "Home", subMenu: "" },
+  {
+    // destination: "",
+    label: "About",
+    subMenu: [
+      { destination: "/beliefs", label: "What we Believe" },
+      { destination: "/pastor-elisha", label: "Pastor Elisha" },
+      { destination: "/petrina", label: "Petrina" },
+      { destination: "/pastor-foo-seng", label: "Pastor Foo Seng" },
+    ],
+  },
+  {
+    // destination: "",
+    label: "Ministries",
+    subMenu: [
+      { destination: "/worship", label: "Worship Team" },
+      { destination: "/sunday-school", label: "Sunday School" },
+      { destination: "/geny", label: "Youth" },
+      { destination: "/young-adults", label: "Young Adults" },
+      { destination: "/connect-groups", label: "Connect Groups" },
+    ],
+  },
+  { destination: "/message", label: "Messages", subMenu: "" },
+  { destination: "/contact", label: "Contact", subMenu: "" },
+]
 
 const Menu = () => {
   return (
-    <Navigation>
-      <MenuList>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link>
-            About Us
-            <ul>
-              <li>
-                <Link to="/beliefs">What We Believe</Link>
-              </li>
-              <li>
-                <Link to="/pastor-elisha">Pastor Elisha Satvinder</Link>
-              </li>
-              <li>
-                <Link to="/petrina">Petrina Satvinder</Link>
-              </li>
-              <li>
-                <Link to="/pastor-foo-seng">Pastor Foo Seng</Link>
-              </li>
-            </ul>
-          </Link>
-        </li>
-        <li>
-          <Link>
-            Ministries
-            <ul>
-              <li>
-                <Link to="/worship">Worship Team</Link>
-              </li>
-              <li>
-                <Link to="/sunday-school">Sunday School</Link>
-              </li>
-              <li>
-                <Link to="/geny">Gen.Y Youth</Link>
-              </li>
-              <li>
-                <Link to="/young-adults">Young Adults</Link>
-              </li>
-              <li>
-                <Link to="/connect-groups">Connect Groups</Link>
-              </li>
-            </ul>
-          </Link>
-        </li>
-        <li>
-          <Link to="/message">Messages</Link>
-        </li>
-        {/* <li>
-          <Link to="/gallery">Gallery</Link>
-        </li> */}
-        <li>
-          <Link to="/contact">Contact us</Link>
-        </li>
-      </MenuList>
-    </Navigation>
+    <StyledMenu>
+      {menuItems.map(item => {
+        if (item.subMenu === "") {
+          return (
+            <MenuItem
+              key={item.label}
+              to={item.destination}
+              label={item.label}
+            />
+          )
+        }
+        return (
+          <>
+            <MenuItem key={item.label} label={item.label} />
+            {item.subMenu.map(subMenu => {
+              return (
+                <MenuItem
+                  key={subMenu.label}
+                  to={subMenu.destination}
+                  label={subMenu.label}
+                  submenu={true}
+                />
+              )
+            })}
+          </>
+        )
+      })}
+    </StyledMenu>
   )
 }
 

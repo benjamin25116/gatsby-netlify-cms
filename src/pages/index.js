@@ -1,9 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import Livestream from "../components/livestream"
 
 const Home = ({ data }) => {
@@ -14,43 +14,50 @@ const Home = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <Seo title="Home" />
 
       <section className="home--banner">
-      {homeBanner ? (
-        <GatsbyImage image={homeBanner.node.childImageSharp.gatsbyImageData} />
+        {homeBanner ? (
+          <GatsbyImage
+            image={homeBanner.node.childImageSharp.gatsbyImageData}
+            alt=""
+          />
         ) : null}
       </section>
-      
-      <Livestream/>
 
-      <article className="home--writeup"
+      <Livestream />
+
+      <article
+        className="home--writeup"
         dangerouslySetInnerHTML={{
           __html: home.html,
         }}
         itemProp="write-up"
       ></article>
     </Layout>
-  );
+  )
 }
 
 export default Home
 
-export const pageQuery = graphql`{
-  allFile(filter: {relativeDirectory: {eq: "home"}}) {
-    edges {
-      node {
-        name
-        childImageSharp {
-          gatsbyImageData(layout: FULL_WIDTH)
+export const pageQuery = graphql`
+  {
+    allFile(filter: { relativeDirectory: { eq: "home" } }) {
+      edges {
+        node {
+          name
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
         }
       }
     }
-  }
-  allMarkdownRemark(filter: {frontmatter: {title: {regex: "/home/i"}}}) {
-    nodes {
-      html
+    allMarkdownRemark(
+      filter: { frontmatter: { title: { regex: "/home/i" } } }
+    ) {
+      nodes {
+        html
+      }
     }
   }
-}
 `

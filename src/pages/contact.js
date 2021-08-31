@@ -1,13 +1,13 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 const Contact = () => {
 
   return (
     <Layout>
-      <SEO title="Contact Us" />
+      <Seo title="Contact Us" />
       <h1>Contact Us</h1>
       <address>
         New Covenant Community 4-2, <br />
@@ -20,9 +20,9 @@ const Contact = () => {
         height="300"
         frameborder="0"
         style={{ border: 0 }}
-        allowfullscreen=""
+        allowFullScreen=""
         aria-hidden="false"
-        tabindex="0"
+        // tabindex="0"
         title="Map to New Covenant Community Church"
       ></iframe>
       <p>
